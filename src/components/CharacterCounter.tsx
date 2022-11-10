@@ -2,8 +2,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { ChangeEvent, useCallback } from "react";
-import { useRecoilState } from "recoil";
-import { textState } from "../recoil_state";
+import { globalState } from '../globalState';
 import { CharacterCount } from "./CharacterCount"
 
 export const CharacterCounter: React.FC = () => {
@@ -16,7 +15,7 @@ export const CharacterCounter: React.FC = () => {
 };
 
 const TextInput: React.FC = () => {
-  const [text, setText] = useRecoilState(textState);
+  const [text, setText] = globalState.useText();
 
   const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);

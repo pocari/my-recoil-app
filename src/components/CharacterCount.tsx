@@ -1,9 +1,8 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
-import { charCountState } from '../recoil_state';
+import { globalState } from '../globalState';
 
 export const CharacterCount: React.FC = () => {
-  const count = useRecoilValue(charCountState);
+  const count = globalState.useTextCount();
 
   return (
     <>
