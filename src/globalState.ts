@@ -1,19 +1,6 @@
 import { atom, selector, selectorFamily, useRecoilCallback, useRecoilState, useRecoilValue } from "recoil";
 import { TodoItem } from "./models/TodoItem";
 
-const textState = atom({
-  key: 'textState',
-  default: '',
-});
-
-const charCountState = selector({
-  key: 'charCountState',
-  get: ({get}) => {
-    const text = get(textState);
-    return text.length
-  },
-});
-
 const todoItemsAtom = atom<TodoItem[]>({
   key: 'todoItemsAtom',
   default: [ ],
@@ -42,8 +29,6 @@ const useFetchTodoItems = () => {
 }
 
 export const globalState = {
-  useText: () => useRecoilState(textState),
-  useTextCount: () => useRecoilValue(charCountState),
   useFetchTodoItems,
   useTodoItems: () => useRecoilValue(todoItemsAtom),
   useTodoItem: (id: number) => useRecoilValue(todoItemSelector(id)),
